@@ -1,0 +1,57 @@
+<div style="font-family:sans-serif;max-width:280px;margin:0 auto;background:#1c1c1c;border-radius:12px;padding:16px;">
+  <div style="background:#000000;border-radius:8px;padding:12px 14px;margin-bottom:12px;text-align:right;min-height:70px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;">
+    <div id="expr" style="font-size:12px;color:#885522;min-height:16px;"></div>
+    <div id="result" style="font-size:28px;font-weight:700;color:#ff8c00;">0</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+    <button onclick="pct()"        style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:15px;font-weight:700;height:52px;cursor:pointer;">%</button>
+    <button onclick="toggleSign()" style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:15px;font-weight:700;height:52px;cursor:pointer;">+/-</button>
+    <button onclick="backspace()"  style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:15px;font-weight:700;height:52px;cursor:pointer;">⌫</button>
+    <button onclick="clearAll()"   style="background:#ff8c00;color:#000000;border:none;border-radius:8px;font-size:16px;font-weight:700;height:52px;cursor:pointer;">C</button>
+
+    <button onclick="inp('7')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">7</button>
+    <button onclick="inp('8')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">8</button>
+    <button onclick="inp('9')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">9</button>
+    <button onclick="op('÷')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">÷</button>
+
+    <button onclick="inp('4')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">4</button>
+    <button onclick="inp('5')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">5</button>
+    <button onclick="inp('6')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">6</button>
+    <button onclick="op('×')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">×</button>
+
+    <button onclick="inp('1')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">1</button>
+    <button onclick="inp('2')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">2</button>
+    <button onclick="inp('3')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">3</button>
+    <button onclick="op('−')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">−</button>
+
+    <button onclick="inp('0')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;grid-column:span 2;">0</button>
+    <button onclick="dot()"    style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">.</button>
+    <button onclick="op('+')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">+</button>
+
+    <button onclick="equals()" style="background:#ff8c00;color:#000000;border:none;border-radius:8px;font-size:20px;font-weight:700;height:52px;cursor:pointer;grid-column:span 4;">=</button>
+  </div>
+</div>
+<script>
+let cur='0',prev='',oper=null,fresh=false;
+const res=document.getElementById('result');
+const expr=document.getElementById('expr');
+function upd(){res.textContent=cur;res.style.fontSize=cur.length>10?'18px':cur.length>7?'22px':'28px';}
+function inp(v){if(fresh){cur=v;fresh=false;}else cur=cur==='0'?v:cur+v;if(cur.length>15)cur=cur.slice(0,15);upd();}
+function dot(){if(fresh){cur='0.';fresh=false;}else if(!cur.includes('.'))cur+='.';upd();}
+function op(o){if(oper&&!fresh)equals(true);prev=cur;oper=o;fresh=true;expr.textContent=prev+' '+o;}
+function equals(chain=false){
+  if(!oper||!prev)return;
+  let a=parseFloat(prev),b=parseFloat(cur),r;
+  if(oper==='+')r=a+b;
+  else if(oper==='−')r=a-b;
+  else if(oper==='×')r=a*b;
+  else if(oper==='÷')r=b===0?'Error':a/b;
+  if(!chain){expr.textContent=prev+' '+oper+' '+cur+' =';oper=null;}
+  cur=r==='Error'?'Error':parseFloat(r.toFixed(10)).toString();
+  fresh=true;upd();
+}
+function clearAll(){cur='0';prev='';oper=null;fresh=false;expr.textContent='';upd();}
+function backspace(){if(fresh||cur==='Error')return;cur=cur.length>1?cur.slice(0,-1):'0';upd();}
+function pct(){cur=(parseFloat(cur)/100).toString();upd();}
+function toggleSign(){if(cur!=='0'&&cur!=='Error')cur=(parseFloat(cur)*-1).toString();upd();}
+</script>
