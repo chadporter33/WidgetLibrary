@@ -11,37 +11,37 @@
 </head>
 <body>
 
-<div style="font-family:sans-serif;max-width:280px;margin:0 auto;background:#1c1c1c;border-radius:12px;padding:16px;">
+<div style="font-family:sans-serif;width:95vw;max-width:480px;margin:0 auto;background:#1c1c1c;border-radius:12px;padding:20px;">
   <div style="background:#000000;border-radius:8px;padding:12px 14px;margin-bottom:12px;text-align:right;min-height:70px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;">
     <div id="expr" style="font-size:12px;color:#885522;min-height:16px;"></div>
     <div id="result" style="font-size:28px;font-weight:700;color:#ff8c00;">0</div>
   </div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
-    <button onclick="pct()"        style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:15px;font-weight:700;height:52px;cursor:pointer;">%</button>
-    <button onclick="toggleSign()" style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:15px;font-weight:700;height:52px;cursor:pointer;">+/-</button>
-    <button onclick="backspace()"  style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:15px;font-weight:700;height:52px;cursor:pointer;">⌫</button>
-    <button onclick="clearAll()"   style="background:#ff8c00;color:#000000;border:none;border-radius:8px;font-size:16px;font-weight:700;height:52px;cursor:pointer;">C</button>
+    <button onclick="pct()"        style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:15px;font-weight:700;height:70px;cursor:pointer;">%</button>
+    <button onclick="toggleSign()" style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:18px;font-weight:700;height:70px;cursor:pointer;">+/-</button>
+    <button onclick="backspace()"  style="background:#2e2e2e;color:#aaaaaa;border:none;border-radius:8px;font-size:18px;font-weight:700;height:70px;cursor:pointer;">⌫</button>
+    <button onclick="clearAll()"   style="background:#ff8c00;color:#000000;border:none;border-radius:8px;font-size:20px;font-weight:700;height:70px;cursor:pointer;">C</button>
 
-    <button onclick="inp('7')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">7</button>
-    <button onclick="inp('8')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">8</button>
-    <button onclick="inp('9')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">9</button>
-    <button onclick="op('÷')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">÷</button>
+    <button onclick="inp('7')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">7</button>
+    <button onclick="inp('8')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">8</button>
+    <button onclick="inp('9')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">9</button>
+    <button onclick="op('÷')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">÷</button>
 
-    <button onclick="inp('4')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">4</button>
-    <button onclick="inp('5')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">5</button>
-    <button onclick="inp('6')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">6</button>
-    <button onclick="op('×')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">×</button>
+    <button onclick="inp('4')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">4</button>
+    <button onclick="inp('5')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">5</button>
+    <button onclick="inp('6')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">6</button>
+    <button onclick="op('×')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">×</button>
 
-    <button onclick="inp('1')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">1</button>
-    <button onclick="inp('2')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">2</button>
-    <button onclick="inp('3')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">3</button>
-    <button onclick="op('−')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">−</button>
+    <button onclick="inp('1')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">1</button>
+    <button onclick="inp('2')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">2</button>
+    <button onclick="inp('3')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">3</button>
+    <button onclick="op('−')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">−</button>
 
-    <button onclick="inp('0')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;grid-column:span 2;">0</button>
-    <button onclick="dot()"    style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">.</button>
-    <button onclick="op('+')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:18px;font-weight:700;height:52px;cursor:pointer;">+</button>
+    <button onclick="inp('0')" style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;grid-column:span 2;">0</button>
+    <button onclick="dot()"    style="background:#2e2e2e;color:#ffffff;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">.</button>
+    <button onclick="op('+')"  style="background:#3a3a3a;color:#ff8c00;border:none;border-radius:8px;font-size:24px;font-weight:700;height:70px;cursor:pointer;">+</button>
 
-    <button onclick="equals()" style="background:#ff8c00;color:#000000;border:none;border-radius:8px;font-size:20px;font-weight:700;height:52px;cursor:pointer;grid-column:span 4;">=</button>
+    <button onclick="equals()" style="background:#ff8c00;color:#000000;border:none;border-radius:8px;font-size:26px;font-weight:700;height:70px;cursor:pointer;grid-column:span 4;">=</button>
   </div>
 </div>
 
